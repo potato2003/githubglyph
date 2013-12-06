@@ -1,0 +1,66 @@
+#!/bin/zsh
+
+autoload -U colors; colors
+
+
+#
+# 
+#
+IFS='' \read -r -d '' Source <<-EOF
+	o                      
+	o                      
+	o                      
+	o                      
+	o                      
+	o                      
+	o                      
+EOF
+
+
+function IsGitWorkingDirectory {
+    local Directory=${1}
+
+    return $(
+        \cd ${Directory} &&
+        \git rev-parse --is-inside-work-tree &>/dev/null
+    )
+}
+
+
+function Display {
+    local Source=${1}
+    local OldString='o'
+    local NewString=' *'
+
+    # Replace character for redability
+    echo ${Source//${OldString}/${NewString}}
+}
+
+
+function ValidateFormat {
+}
+
+
+function Commit {
+    local Source=${1}
+
+    # Count Week from Source
+    local Weeks=$(
+        ${Source}
+        for (a in ); do
+            
+        done
+    )
+}
+
+
+function Main() {
+    if ! IsGitWorkingDirectory ${PWD}; then
+        # echo "" not git working directory.
+        return
+    fi
+
+    Display Source
+}
+
+exit Main()
